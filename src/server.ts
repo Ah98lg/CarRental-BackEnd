@@ -1,8 +1,13 @@
 import express from 'express'
-import { CreateCategory } from './routes/CreateCategory.routes';
+import { categoriesRoutes } from './routes/Category.routes';
+import { specificationRoutes } from './routes/Specification.routes';
 
 const app = express();
 
-app.listen(3333);
+app.use(express.json())
 
-app.post("/categories" , CreateCategory)
+app.use("/categories",categoriesRoutes)
+
+app.use("/specifications", specificationRoutes)
+
+app.listen(8080);
