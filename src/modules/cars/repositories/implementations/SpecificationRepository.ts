@@ -1,6 +1,6 @@
-import { Category } from "../model/Category";
-import { Specification } from "../model/Specification";
-import { ISpecificationDTO, ISpecificationRepo } from "./ISpecificationRepo";
+import { Specification } from "../../model/Specification";
+import { ISpecificationDTO, ISpecificationRepo } from "../ISpecificationRepo";
+
 
 
 
@@ -9,9 +9,22 @@ class SpecificationRepository implements ISpecificationRepo{
 
     private specifications : Specification[]
 
-    constructor(){
+    private static INSTANCE : SpecificationRepository;
+
+    private constructor(){
         this.specifications = []
     }
+
+    public static getInstance() : SpecificationRepository{
+
+        if(!SpecificationRepository.INSTANCE){
+            SpecificationRepository.INSTANCE = new SpecificationRepository()
+        }
+
+        return SpecificationRepository.INSTANCE;
+    }
+
+
 
     findByName(name: string) : Specification{
         const descriptionName = this.specifications.find((specification) => specification.name === name);

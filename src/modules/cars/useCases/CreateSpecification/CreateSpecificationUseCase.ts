@@ -1,4 +1,4 @@
-import { ICategoryRepo } from "../repositories/ICategoriesRepo";
+import { ICategoryRepo } from "../../repositories/ICategoriesRepo";
 
 interface ISpecificationService{
     name: string,
@@ -6,7 +6,7 @@ interface ISpecificationService{
 }
 
 
-class CreateSpecificationService{
+class CreateSpecificationUseCase{
 
     constructor(private specificationRepository : ICategoryRepo){}
 
@@ -21,4 +21,4 @@ class CreateSpecificationService{
     }
 }
 
-export { CreateSpecificationService }
+export { CreateSpecificationUseCase }
